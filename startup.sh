@@ -1,2 +1,1 @@
-cd ./App;
-npm start;
+su pi -c 'node /home/pi/App/startup.js < /dev/null &'
