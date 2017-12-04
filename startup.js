@@ -11,7 +11,7 @@ require('dns').resolve('www.google.com', function (err) {
 function getData(){
     const https = require('https');
     https.get('https://docs.google.com/spreadsheets/d/e/2PACX-1vRuEkjPdNudyaSRZBU8JbblLdufzq5bOHqGW9818cwj96gdIQaNM-YehW47lgyiZGejtwH_IVjZgMUB/pub?gid=0&single=true&output=csv', function(resp) {
-        let data = '';
+        var data = '';
 
         resp.on('data', function(chunk) {
             data += chunk;
@@ -50,18 +50,18 @@ function runServer(){
 
 function writeJson(input){
     const fs = require('fs')
-    let output = []
-    let head = input[0]
-    for (let i = 1; i < input.length; i++) {
+    var output = []
+    var head = input[0]
+    for (var i = 1; i < input.length; i++) {
         const line = input[i];
-        let tmp = {}
-        for (let j = 0; j < line.length; j++) {
+        var tmp = {}
+        for (var j = 0; j < line.length; j++) {
             tmp[head[j]] = line[j]
         }
         output.push(tmp)
     }
 
-    let json = JSON.stringify(output);
+    var json = JSON.stringify(output);
     fs.writeFile('test.json', json, 'utf8', function(){
         console.log("JSON UPDATED")
         runServer()
@@ -81,7 +81,7 @@ function createServer(){
         // parse URL
         const parsedUrl = url.parse(req.url);
         // extract URL path
-        let pathname = `.${parsedUrl.pathname}`;
+        var pathname = `.${parsedUrl.pathname}`;
         // based on the URL path, extract the file extention. e.g. .js, .doc, ...
         const ext = path.parse(pathname).ext;
         // maps file extention to MIME typere
