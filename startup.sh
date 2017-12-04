@@ -1,2 +1,2 @@
-cd ./App
-npm start
+cd ./App;
+npm start;
