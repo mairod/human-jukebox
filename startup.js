@@ -44,7 +44,7 @@ function runServer(){
     createServer()
 
     setTimeout(function(){
-        exec("DISPLAY=:0 chromium-browser --noerrdialogs --kiosk http://localhost:9000/build/index.html --incognito", log)
+        exec("DISPLAY=:0 chromium-browser --noerrdialogs --kiosk http://localhost:3000/build/index.html --incognito", log)
     }, 5000)
 }
 
