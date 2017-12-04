@@ -10,19 +10,19 @@ require('dns').resolve('www.google.com', function (err) {
 
 function getData(){
     const https = require('https');
-    https.get('https://docs.google.com/spreadsheets/d/e/2PACX-1vRuEkjPdNudyaSRZBU8JbblLdufzq5bOHqGW9818cwj96gdIQaNM-YehW47lgyiZGejtwH_IVjZgMUB/pub?gid=0&single=true&output=csv', (resp) => {
+    https.get('https://docs.google.com/spreadsheets/d/e/2PACX-1vRuEkjPdNudyaSRZBU8JbblLdufzq5bOHqGW9818cwj96gdIQaNM-YehW47lgyiZGejtwH_IVjZgMUB/pub?gid=0&single=true&output=csv', function(resp) {
         let data = '';
 
-        resp.on('data', (chunk) => {
+        resp.on('data', function(chunk) {
             data += chunk;
         });
 
-        resp.on('end', () => {
+        resp.on('end', function() {
             console.log("DATA LOADED");
             parseCSV(data)
         });
         
-    }).on("error", (err) => {
+    }).on("error", function(err) {
         console.log("DATA LOAD ERROR, STARTING SEVER");
         console.log("Error: " + err.message);
         runServer()
@@ -43,7 +43,7 @@ function runServer(){
     
     createServer()
 
-    setTimeout(()=>{
+    setTimeout(function(){
         exec("DISPLAY=:0 chromium-browser --noerrdialogs --kiosk http://localhost:3000 --incognito", log)
     }, 5000)
 }
@@ -62,7 +62,7 @@ function writeJson(input){
     }
 
     let json = JSON.stringify(output);
-    fs.writeFile('test.json', json, 'utf8', ()=>{
+    fs.writeFile('test.json', json, 'utf8', function(){
         console.log("JSON UPDATED")
         runServer()
     });
@@ -73,7 +73,7 @@ function createServer(){
     const url = require('url');
     const fs = require('fs');
     const path = require('path');
-    const port = process.argv[2] || 9000;
+    const port = process.argv[2] || 3000;
 
     http.createServer(function (req, res) {
         console.log(`${req.method} ${req.url}`);
