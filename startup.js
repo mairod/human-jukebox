@@ -76,12 +76,12 @@ function createServer(){
     const port = process.argv[2] || 3000;
 
     http.createServer(function (req, res) {
-        console.log(`${req.method} ${req.url}`);
+        console.log(req.method, req.url);
 
         // parse URL
         const parsedUrl = url.parse(req.url);
         // extract URL path
-        var pathname = `.${parsedUrl.pathname}`;
+        var pathname = "" + parsedUrl.pathname;
         // based on the URL path, extract the file extention. e.g. .js, .doc, ...
         const ext = path.parse(pathname).ext;
         // maps file extention to MIME typere
