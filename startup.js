@@ -44,8 +44,8 @@ function runServer(){
     createServer()
 
     setTimeout(function(){
-        exec("DISPLAY=:0 chromium-browser --noerrdialogs --kiosk http://localhost:3000 --incognito", log)
-    }, 5000)
+        exec("DISPLAY=:0 chromium-browser --noerrdialogs --kiosk http://localhost:3000/build/index.html --incognito", log)
+    }, 2000)
 }
 
 function writeJson(input){

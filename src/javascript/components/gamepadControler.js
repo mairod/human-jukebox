@@ -25,7 +25,10 @@ class GamePadController {
         if (!gamepads) return
         var gp = gamepads[0]        
         if (this.buttonPressed(gp.buttons[3])) {
-            console.log('yo')   
+            console.log('yo')  
+            document.body.style.backgroundColor = 'red' 
+        } else {
+            document.body.style.backgroundColor = 'white' 
         }
 
     }
